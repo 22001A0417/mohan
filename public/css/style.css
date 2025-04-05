@@ -25,68 +25,35 @@ body {
     color: #222222 !important;
 }
 
-/* footer
-.f-info-links a{
-    text-decoration: none;
-    color: #222222;
-}
-
-.f-info-links a:hover {
-    text-decoration: underline;
-}
-
-.f-info-links, 
-.f-info-socials,
-.f-info-brand {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.f-info-socials i {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-}
-.f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
-}*/
-
 /* Footer */
 footer {
-    background-color: #343a40; /* Dark background for footer */
-    color: #ffffff; /* White text */
-    border-top: 1px solid #444; /* Subtle border on top */
-    padding: 1rem 0; /* Spacing for the footer */
+    background-color: #343a40; 
+    color: #ffffff; 
+    border-top: 1px solid #444; 
+    padding: 1rem 0; 
 }
 
 .f-info-links a {
     text-decoration: none;
-    color: #ffc107; /* Bootstrap warning color */
+    color: #ffc107; 
     transition: color 0.3s ease;
 }
 
 .f-info-links a:hover {
     text-decoration: underline;
-    color: #fe424d; /* Custom red color for hover */
+    color: #fe424d; 
 }
 
 .f-info-socials i {
     font-size: 1.5rem;
     margin-right: 1rem;
-    color: #ffffff; /* White icons */
+    color: #ffffff; 
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .f-info-socials i:hover {
-    transform: scale(1.2); /* Slight scaling effect */
-    color: #007bff; /* Custom red color for hover */
+    transform: scale(1.2); 
+    color: #007bff; 
 }
 
 .f-info-brand {
@@ -99,7 +66,7 @@ footer {
 .f-info {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Distribute items evenly */
+    justify-content: space-between; 
     align-items: center;
     text-align: center;
     padding: 1rem;
@@ -108,35 +75,35 @@ footer {
 /* Footer Social Media Links in Vertical Layout */
 .f-info-socials {
     display: flex;
-    flex-direction: column; /* Arrange icons and text in a vertical column */
-    align-items: center; /* Center align the items */
+    flex-direction: column; 
+    align-items: center;
     margin-bottom: 1rem;
 }
 
 .f-info-socials a {
     text-decoration: none;
-    color: white; /* Default text color */
-    font-size: 1rem; /* Font size for text */
-    margin: 0.5rem 0; /* Spacing between each link */
-    display: flex; /* Flex container for icon and name */
-    align-items: center; /* Align icon and text vertically */
+    color: white; 
+    font-size: 1rem; 
+    margin: 0.5rem 0; 
+    display: flex; 
+    align-items: center; 
     gap: 0.5rem;
-    width: 100%; /* Space between the icon and the text */
-    transition: color 0.3s ease; /* Smooth hover effect */
+    width: 100%; 
+    transition: color 0.3s ease;
 }
 
 .f-info-socials a:hover {
-    color: #007bff; /* Change to Bootstrap primary color on hover */
+    color: #007bff; 
 }
 
 .f-info-socials i {
-    font-size: 1.5rem; /* Icon size */
+    font-size: 1.5rem; 
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .f-info-socials i:hover {
-    transform: scale(1.2); /* Slight zoom on hover */
-    color: #007bff; /* Change icon color on hover */
+    transform: scale(1.2); 
+    color: #007bff; 
 }
 
 /* cards */

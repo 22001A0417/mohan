@@ -5,14 +5,12 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 const synonymMapping = require('../utils/synonymMapping');
 
 module.exports.index = async (req, res) => {
-    const { category } = req.query; // Retrieve category from query parameter
+    const { category } = req.query; 
     let listings;
   
     if (category) {
-      // Filter listings by the selected category
         listings = await Listing.find({ category });
     } else {
-      // If no category is selected, fetch all listings
         listings = await Listing.find({});
     }
   
@@ -37,7 +35,6 @@ module.exports.showListing = async(req,res) => {
         req.flash("error", "Listing you requested for does not exist");
         res.redirect("/listings");
     }
-    //console.log(listing);
     res.render("listings/show.ejs",{listing});
 };
 
@@ -47,7 +44,6 @@ module.exports.createListing = async(req,res,next) => {
         limit: 1,
     })
     .send()
-    //console.log(response.body.features[0].geometry);
 
     let url = req.file.path;
     let filename = req.file.filename;
@@ -57,7 +53,6 @@ module.exports.createListing = async(req,res,next) => {
     newListing.image = {url, filename};
     newListing.geometry = response.body.features[0].geometry;
     let savedListing = await newListing.save();
-    console.log(savedListing);
     req.flash("success", "New Listing Created!");
     res.redirect("/listings");
 };
@@ -97,15 +92,12 @@ module.exports.destroyListing = async(req,res) => {
 };
 
 module.exports.search = async (req, res) => {
-    const { query } = req.query; // User's search input
-
-    // Normalize the query using the mapping
-    const normalizedQuery = synonymMapping[query?.toLowerCase()] || query; // Default to original query
+    const { query } = req.query; 
+    const normalizedQuery = synonymMapping[query?.toLowerCase()] || query; 
 
     let listings;
 
     if (normalizedQuery) {
-        // Search listings in the database
         listings = await Listing.find({
             $or: [
                 { country: { $regex: normalizedQuery, $options: 'i' } },
