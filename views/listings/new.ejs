@@ -14,6 +14,7 @@
                     required
                 >
                 <div class="valid-feedback">Title looks good!</div>
+                <div class="invalid-feedback">Title should be valid</div>
             </div>
             <div>
                 <label for="description" class="form-label">Description</label>
@@ -23,6 +24,7 @@
                     class="form-control"
                     required
                 ></textarea>
+                <div class="valid-feedback">Description looks good!</div>
                 <div class="invalid-feedback">Please enter a short description</div>
             </div>
             <div>
@@ -35,7 +37,7 @@
                 >
             </div>
             <div class="row">
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-md-6">
                     <label for="price" class="form-label">Price</label>
                     <input 
                         placeholder="1200" 
@@ -43,9 +45,37 @@
                         class="form-control"
                         required
                     >
+                    <div class="valid-feedback">price is valid!</div>
                     <div class="invalid-feedback">Price should be valid</div>
                 </div>
-                <div class="mb-3 col-md-8"> 
+                <div class="mb-3 col-md-6"> 
+                    <label for="nights" class="form-label">Nights</label>
+                    <input 
+                        type="number" 
+                        placeholder="No.of Nights" 
+                        name="listing[nights]"
+                        class="form-control"
+                        required
+                        min="1"
+                    >
+                    <div class="valid-feedback">Night are valid!</div>
+                    <div class="invalid-feedback">Night should be valid</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="location" class="form-label">Location</label>
+                    <input 
+                        type="text" 
+                        placeholder="jaipur, Rajasthan" 
+                        name="listing[location]"
+                        class="form-control"
+                        required
+                    >
+                    <div class="valid-feedback">Location looks good!</div>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+                <div class="mb-3 col-md-6"> 
                     <label for="country" class="form-label">Country</label>
                     <input 
                         type="text" 
@@ -54,19 +84,9 @@
                         class="form-control"
                         required
                     >
+                    <div class="valid-feedback">Country looks good!</div>
                     <div class="invalid-feedback">Country should be valid</div>
                 </div>
-            </div>
-            <div>
-                <label for="location" class="form-label">Location</label>
-                <input 
-                    type="text" 
-                    placeholder="jaipur, Rajasthan" 
-                    name="listing[location]"
-                    class="form-control"
-                    required
-                >
-                <div class="invalid-feedback">Location should be valid</div>
             </div>
             <div>
                 <label for="destination" class="form-label">Destination</label>
@@ -91,7 +111,6 @@
                 </select>
 
             </div>        
-
             <button class="btn btn-dark add-btn mt-3">Add</button>
         </form>
     </div>

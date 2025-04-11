@@ -14,7 +14,7 @@ module.exports.index = async (req, res) => {
         listings = await Listing.find({});
     }
   
-    res.render('listings', { allListings: listings, category }); // Pass category to the template
+    res.render('listings', { allListings: listings, category }); 
 };
   
 module.exports.renderNewForm = async(req,res) => {
@@ -39,6 +39,7 @@ module.exports.showListing = async(req,res) => {
 };
 
 module.exports.createListing = async(req,res,next) => {
+
     let response = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1,
@@ -47,8 +48,9 @@ module.exports.createListing = async(req,res,next) => {
 
     let url = req.file.path;
     let filename = req.file.filename;
-    
+
     const newListing = new Listing(req.body.listing);
+
     newListing.owner = req.user._id;
     newListing.image = {url, filename};
     newListing.geometry = response.body.features[0].geometry;

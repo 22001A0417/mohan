@@ -12,30 +12,61 @@
                     id="username" 
                     class="form-control"
                     required
+                    value="<%= typeof usernameValue !== 'undefined' ? usernameValue : '' %>"
                 >
                 <div class="valid-feedback">Looks good!</div>
             </div>
+
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input 
                     type="email" 
                     name="email"
                     id="email" 
-                    class="form-control"
+                    class="form-control <% if (emailError) { %>is-invalid<% } %>"
                     required
+                    value="<%= typeof emailValue !== 'undefined' ? emailValue : '' %>"
                 >
+                <div class="invalid-feedback">
+                    Please enter a valid email address (e.g. name@example.com).
+                </div>
             </div>
+
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input 
                     type="password" 
                     name="password"
                     id="password" 
-                    class="form-control"
+                    class="form-control <% if (passwordError) { %>is-invalid<% } %>"
                     required
+                    value="<%= typeof passwordValue !== 'undefined' ? passwordValue : '' %>"
+                    pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
                 >
+                <div class="invalid-feedback">
+                    Password must be at least 8 characters long, contain one uppercase letter, one digit, and one special character.
+                </div>
             </div>
+
             <button class="btn btn-success">Signup</button>
         </form>
     </div>
 </div>
+
+<script>
+    (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>

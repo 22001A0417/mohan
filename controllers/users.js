@@ -1,24 +1,46 @@
 const User = require("../models/user.js");
 
-module.exports.renderSignupForm = (req,res) => {
-    res.render("users/signup.ejs");
+module.exports.renderSignupForm = (req, res) => {
+    res.render("users/signup.ejs", {
+        emailError: false,      
+        passwordError: false,  
+        emailValue: "",
+        usernameValue: ""
+    });
 };
 
-module.exports.signup = async(req,res) => {
+module.exports.signup = async (req, res) => {
     try {
-        let {username, email, password} = req.body;
-        const newUser = new User({email, username});
+        let { username, email, password } = req.body;
+
+        // Password validation
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!passwordRegex.test(password)) {
+            req.flash("error", "Password must be at least 8 characters long, contain one uppercase letter, one digit, and one special character.");
+            return res.render("users/signup", {
+                emailError: false,
+                passwordError: true,  
+                emailValue: email,
+                usernameValue: username
+            });
+        }
+
+        const newUser = new User({ email, username });
         const registeredUser = await User.register(newUser, password);
         req.login(registeredUser, (err) => {
-            if(err) {
-                next(err);
-            }
-            req.flash("success", "welcome to wanderlust");
-            res.redirect("/listings");    
+            if (err) return next(err);
+            req.flash("success", "Welcome to Wanderlust!");
+            res.redirect("/listings");
         });
-    } catch(e) {
+    } catch (e) {
+        const isEmailError = e.message.toLowerCase().includes("email");
         req.flash("error", e.message);
-        res.redirect("/signup");
+        res.render("users/signup", {
+            emailError: isEmailError,
+            emailValue: req.body.email,
+            usernameValue: req.body.username,
+            passwordError: false,  
+        });
     }
 };
 

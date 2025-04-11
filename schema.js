@@ -12,6 +12,7 @@ module.exports.listingSchema = joi.object({
             'BeachFront', 'Mountains', 'Castles', 'Camping', 'Farms', 
             'Arctic', 'Iconic Cities', 'Rooms', 'Trending', 'Amazing Pools', 'Boats'
         ).required(),
+        nights: joi.number().required().min(1),
     }).required()        
 });
 

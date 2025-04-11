@@ -15,7 +15,6 @@ module.exports.isLoggedIn = (req,res,next) => {
 module.exports.saveRedirectUrl = (req, res, next) => {
     if (!req.isAuthenticated() && req.originalUrl !== '/login' && req.originalUrl !== '/signup') {
         req.session.returnTo = req.originalUrl; 
-        console.log("Saved Redirect URL:", req.session.returnTo);
     }
     next();
 };

@@ -16,6 +16,7 @@ const sampleListings = [
       coordinates: [-118.7804, 34.0258], 
     },
     category: "Mountains",
+    nights: 2,
   },
   {
     title: "Modern Loft in Downtown",
@@ -34,6 +35,7 @@ const sampleListings = [
       coordinates: [-74.0060, 40.7143], 
     },
     category: "Castles",
+    nights: 3,
   },
   {
     title: "Mountain Retreat",
@@ -52,6 +54,7 @@ const sampleListings = [
       coordinates: [-106.8175, 39.1911], 
     },
     category: "Arctic",
+    nights: 1,
   },
   {
     title: "Historic Villa in Tuscany",
@@ -70,6 +73,7 @@ const sampleListings = [
       coordinates: [11.2463, 43.7793], 
     },
     category: "Farms",
+    nights: 2,
   },
   {
     title: "Secluded Treehouse Getaway",
@@ -88,6 +92,7 @@ const sampleListings = [
       coordinates: [-122.6762, 45.5235], 
     },
     category: "Camping",
+    nights: 1,
   },
   {
     title: "Beachfront Paradise",
@@ -106,6 +111,7 @@ const sampleListings = [
       coordinates: [-86.8466, 21.1743],
     },
     category: "BeachFront",
+    nights: 2,
   },
   {
     title: "Rustic Cabin by the Lake",
@@ -124,6 +130,7 @@ const sampleListings = [
       coordinates: [-120.0324, 39.0968],
     },
     category: "Boats",
+    nights: 1,
   },
   {
     title: "Luxury Penthouse with City Views",
@@ -142,6 +149,7 @@ const sampleListings = [
       coordinates: [-118.2437, 34.0522],
     },
     category: "Trending",
+    nights: 3,
   },
   {
     title: "Ski-In/Ski-Out Chalet",
@@ -160,6 +168,7 @@ const sampleListings = [
       coordinates: [7.2167, 46.1000],
     },
     category: "Rooms",
+    nights: 3,
   },
   {
     title: "Safari Lodge in the Serengeti",
@@ -178,6 +187,7 @@ const sampleListings = [
       coordinates: [34.8333, -2.3333],
     },
     category: "Iconic Cities",
+    nights: 4,
   },
   {
     title: "Historic Canal House",
@@ -196,6 +206,7 @@ const sampleListings = [
       coordinates: [4.897070, 52.377956],
     },
     category: "Mountains",
+    nights: 2,
   },
   {
     title: "Private Island Retreat",
@@ -214,6 +225,7 @@ const sampleListings = [
       coordinates: [178.0650, -17.7134],
     },
     category: "Castles",
+    nights: 5,
   },
   {
     title: "Charming Cottage in the Cotswolds",
@@ -232,6 +244,7 @@ const sampleListings = [
       coordinates: [-2.0330, 51.8000],
     },
     category: "Amazing Pools",
+    nights: 1,
   },
   {
     title: "Historic Brownstone in Boston",
@@ -250,6 +263,7 @@ const sampleListings = [
       coordinates: [-71.0589, 42.3601],
     },
     category: "Camping",
+    nights: 3,
   },
   {
     title: "Beachfront Bungalow in Bali",
@@ -268,6 +282,7 @@ const sampleListings = [
       coordinates: [115.1889, -8.4095],
     },
     category: "Farms",
+    nights: 2,
   },
   {
     title: "Mountain View Cabin in Banff",
@@ -286,6 +301,7 @@ const sampleListings = [
       coordinates: [-115.5657, 51.1802],
     },
     category: "Arctic",
+    nights: 1,
   },
   {
     title: "Art Deco Apartment in Miami",
@@ -304,6 +320,7 @@ const sampleListings = [
       coordinates: [-80.1918, 25.7617],
     },
     category: "BeachFront",
+    nights: 2,
   },
   {
     title: "Tropical Villa in Phuket",
@@ -322,6 +339,7 @@ const sampleListings = [
       coordinates: [98.398392, 7.878978],
     },
     category: "Boats",
+    nights: 3,
   },
   {
     title: "Historic Castle in Scotland",
@@ -340,6 +358,7 @@ const sampleListings = [
       coordinates: [-4.7100, 57.1200],
     },
     category: "Trending",
+    nights: 4,
   },
   {
     title: "Desert Oasis in Dubai",
@@ -358,6 +377,7 @@ const sampleListings = [
       coordinates: [55.296249, 25.276987],
     },
     category: "Rooms",
+    nights: 5,
   },
   {
     title: "Rustic Log Cabin in Montana",
@@ -376,6 +396,7 @@ const sampleListings = [
       coordinates: [-109.5337, 46.9653],
     },
     category: "Iconic Cities",
+    nights: 2,
   },
   {
     title: "Beachfront Villa in Greece",
@@ -394,6 +415,7 @@ const sampleListings = [
       coordinates: [25.3287, 37.4453],
     },
     category: "Mountains",
+    nights: 3,
   },
   {
     title: "Eco-Friendly Treehouse Retreat",
@@ -412,6 +434,7 @@ const sampleListings = [
       coordinates: [-83.7534, 9.7489],
     },
     category: "Castles",
+    nights: 1,
   },
   {
     title: "Historic Cottage in Charleston",
@@ -430,6 +453,7 @@ const sampleListings = [
       coordinates: [-79.9311, 32.7765],
     },
     category: "Amazing Pools",
+    nights: 2,
   },
   {
     title: "Modern Apartment in Tokyo",
@@ -448,6 +472,7 @@ const sampleListings = [
       coordinates: [139.6917, 35.6895],
     },
     category: "Camping",
+    nights: 4,
   },
   {
     title: "Lakefront Cabin in New Hampshire",
@@ -466,6 +491,7 @@ const sampleListings = [
       coordinates: [-71.5000, 44.0000],
     },
     category: "Farms",
+    nights: 2,
   },
   {
     title: "Luxury Villa in the Maldives",
@@ -484,6 +510,7 @@ const sampleListings = [
       coordinates: [73.399658, 1.924992],
     },
     category: "Arctic",
+    nights: 3,
   },
   {
     title: "Ski Chalet in Aspen",
@@ -502,6 +529,7 @@ const sampleListings = [
       coordinates: [-106.8175, 39.1911],
     },
     category: "BeachFront",
+    nights: 2,
   },
   {
     title: "Secluded Beach House in Costa Rica",
@@ -520,6 +548,7 @@ const sampleListings = [
       coordinates: [-83.7534, 9.7489],
     },
     category: "Boats",
+    nights: 1,
   },
 ];
 

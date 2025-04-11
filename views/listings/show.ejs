@@ -18,9 +18,9 @@
         <div class="card-body">
             <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
             <p class="card-text"><%= listing.description %></p>    
-            <p class="card-text">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>    
-            <p class="card-text"><%= listing.location %></p>    
-            <p class="card-text"><%= listing.country %></p>    
+            <p class="card-text"><b>Price:</b> &#8377; <%= listing.price.toLocaleString("en-IN") %></p>    
+            <p class="card-text"><b>Location:</b>&nbsp;<%= listing.location %></p>    
+            <p class="card-text"><b>Country:</b>&nbsp;<%= listing.country %></p>    
         </div>
     </div> 
 
@@ -108,9 +108,11 @@
                             <p class="card-text starability-result" data-rating="<%= review.rating %>"></p>
                             <p class="card-text"><%= review.comment %></p>
                         </div>
-                        <form action="/listings/<%= listing._id %>/reviews/<%=review._id %>?_method=DELETE" class="mb-3" method="POST">
-                            <button class="btn btn-sm btn-dark">Delete</button>
-                        </form>
+                        <% if (currUser && review.author._id.toString() === currUser._id.toString()) { %>
+                            <form action="/listings/<%= listing._id %>/reviews/<%=review._id %>?_method=DELETE" class="mb-3" method="POST">
+                                <button class="btn btn-sm btn-dark">Delete</button>
+                            </form>
+                        <% } %>
                     </div>
                 <% } %>
             </div>

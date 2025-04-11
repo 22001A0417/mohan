@@ -42,6 +42,7 @@ const listingSchema = new Schema({
         required: true,
     },
     category: String,
+    nights: Number,
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {

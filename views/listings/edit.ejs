@@ -10,63 +10,67 @@
             class="needs-validation"
             enctype="multipart/form-data"
         >
-            <div class="md-3">
-                <label for="title" class="form-label"></label>
+        <div class="md-3">
+            <label for="title" class="form-label">Title</label>
+            <input 
+                type="text" 
+                name="listing[title]" 
+                value="<%= listing.title %>" class="form-control"
+                required
+            >
+            <div class="valid-feedback">Title looks good!</div>
+        </div>
+
+        <div class="md-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea 
+                name="listing[description]"
+                class="form-control"
+                required><%= listing.description %></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <div class="mb-3">
+            <label>Original Image</label> <br>
+            <img src="<%= originalImageUrl %>" alt="Listing Image">
+        </div>
+        <div class="md-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input 
+                type="file" 
+                name="listing[image]" 
+                class="form-control"
+            >
+        </div>
+
+        <div class="row">
+            <div class="md-3 col-md-6">
+                <label for="price" class="form-label">Price</label>
                 <input 
-                    type="text" 
-                    name="listing[title]" 
-                    value="<%= listing.title %>" class="form-control"
+                    type="number" 
+                    value="<%= listing.price %>" 
+                    name="listing[price]" 
+                    class="form-control"
                     required
                 >
-                <div class="valid-feedback">Title looks good!</div>
+                <div class="invalid-feedback">Price should be valid</div>
             </div>
-            <div class="md-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea 
-                    type="text" 
-                    name="listing[description]"
-                    class="form-control"
-                    required><%= listing.description %>
-                </textarea>
-                <div class="invalid-feedback">Please enter a short description</div>
-            </div>
-            <div class="mb-3">
-                Original Image <br>
-                <img src="<%= originalImageUrl %>" alt="">
-            </div>
-            <div class="md-3">
-                <label for="image" class="form-label">Upload New Image</label>
+            <div class="md-3 col-md-6">
+                <label for="nights" class="form-label">Nights</label>
                 <input 
-                    type="file" 
-                    name="listing[image]" 
+                    type="number" 
+                    value="<%= listing.nights %>" 
+                    name="listing[nights]" 
                     class="form-control"
+                    required
+                    min="1"
                 >
+                <div class="invalid-feedback">Nights should be valid</div>
             </div>
-            <div class="row">
-                <div class="md-3 col-md-4">
-                    <label for="price" class="form-label">Price</label>
-                    <input 
-                        type="number" 
-                        value="<%= listing.price %>" 
-                        name="listing[price]" 
-                        class="form-control"
-                        required
-                    >
-                    <div class="invalid-feedback">Price should be valid</div>
-                </div>
-                <div class="md-3 col-md-8">
-                    <label for="country" class="form-label">Country</label>
-                    <input 
-                        type="text" 
-                        value="<%= listing.country %>" 
-                        name="listing[country]" 
-                        class="form-control"
-                        required
-                    >
-                    <div class="invalid-feedback">Country should be valid</div>
-                </div>
-            </div>
-            <div class="md-3">
+        </div>
+
+        <div class="row">
+            <div class="md-3 col-md-6">
                 <label for="location" class="form-label">Location</label>
                 <input 
                     type="text" 
@@ -77,8 +81,43 @@
                 >
                 <div class="invalid-feedback">Location should be valid</div>
             </div>
+            <div class="md-3 col-md-6">
+                <label for="country" class="form-label">Country</label>
+                <input 
+                    type="text" 
+                    value="<%= listing.country %>" 
+                    name="listing[country]" 
+                    class="form-control"
+                    required
+                >
+                <div class="invalid-feedback">Country should be valid</div>
+            </div>
+        </div>
 
-            <button class="btn btn-dark edit-btn mt-3">Edit</button>
+        <div class="md-3">
+            <label for="destination" class="form-label">Destination</label>
+            <select 
+                name="listing[destination]" 
+                class="form-select" 
+                required
+            >
+                <option value="">Select Destination</option>
+                <option value="BeachFront" <% if(listing.destination === "BeachFront") { %> selected <% } %>>BeachFront</option>
+                <option value="Mountains" <% if(listing.destination === "Mountains") { %> selected <% } %>>Mountains</option>
+                <option value="Castles" <% if(listing.destination === "Castles") { %> selected <% } %>>Castles</option>
+                <option value="Camping" <% if(listing.destination === "Camping") { %> selected <% } %>>Camping</option>
+                <option value="Farms" <% if(listing.destination === "Farms") { %> selected <% } %>>Farms</option>
+                <option value="Arctic" <% if(listing.destination === "Arctic") { %> selected <% } %>>Arctic</option>
+                <option value="Iconic Cities" <% if(listing.destination === "Iconic Cities") { %> selected <% } %>>Iconic Cities</option>
+                <option value="Rooms" <% if(listing.destination === "Rooms") { %> selected <% } %>>Rooms</option>
+                <option value="Trending" <% if(listing.destination === "Trending") { %> selected <% } %>>Trending</option>
+                <option value="Amazing Pools" <% if(listing.destination === "Amazing Pools") { %> selected <% } %>>Amazing Pools</option>
+                <option value="Boats" <% if(listing.destination === "Boats") { %> selected <% } %>>Boats</option>
+            </select>
+            <div class="invalid-feedback">Destination should be valid</div>
+        </div>
+
+        <button class="btn btn-dark edit-btn mt-3">Edit</button>
         </form>
     </div>
 </div>
