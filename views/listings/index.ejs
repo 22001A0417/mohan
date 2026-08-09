@@ -1,5 +1,6 @@
 <% layout("/layouts/boilerPlate") %>
 
+
 <style>
     #filters {
         display: flex;
@@ -63,8 +64,13 @@
     }
 </style>
 
-<!-- Category Filters -->
+
+<!-- =========================
+     Category Filters
+     ========================= -->
+
 <div id="filters">
+
     <% const categories = [
         { name: 'Trending', icon: 'fa-fire' },
         { name: 'Rooms', icon: 'fa-bed' },
@@ -76,91 +82,212 @@
         { name: 'Farms', icon: 'fa-cow' },
         { name: 'Arctic', icon: 'fa-snowflake' },
         { name: 'BeachFront', icon: 'fa-umbrella-beach' },
-        { name: 'Boats', icon: 'fa-ship' },
+        { name: 'Boats', icon: 'fa-ship' }
     ]; %>
+
     <% categories.forEach(category => { %>
+
         <div class="filter">
             <a href="/listings?category=<%= category.name %>">
-                <div><i class="fa-solid <%= category.icon %>"></i></div>
-                <p><%= category.name %></p>
+
+                <div>
+                    <i class="fa-solid <%= category.icon %>"></i>
+                </div>
+
+                <p>
+                    <%= category.name %>
+                </p>
+
             </a>
         </div>
+
     <% }) %>
+
 </div>
 
-<!-- Toggle for Tax -->
+
+<!-- =========================
+     Tax Toggle
+     ========================= -->
+
 <div class="tax-toggle">
+
     <div class="form-check-reverse form-switch">
+
         <input 
             class="form-check-input"
             type="checkbox"
             role="switch"
-            id="flexSwitchCheckDefault">
+            id="flexSwitchCheckDefault"
+        >
+
         <label 
             class="form-check-label"
-            for="flexSwitchCheckDefault">Display total after taxes
+            for="flexSwitchCheckDefault"
+        >
+            Display total after taxes
         </label>
+
     </div>
+
 </div>
 
-<!-- Listings -->
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+
+<!-- =========================
+     Listings
+     ========================= -->
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mt-3">
+
     <% for (let listing of allListings) { %>
-        <a href="/listings/<%= listing._id %>" class="listing-link">
-            <div class="card col listing-card">
-                <img 
-                    src="<%= listing.image.url %>"
-                    class="card-img-top"
-                    alt="listing_image"
-                    style="height: 20rem;">
-                <div class="card-img-overlay"></div>
-                <div class="card-body" 
-                    data-price="<%= listing.price %>" 
-                    data-nights="<%= listing.nights %>">
-                    <p class="card-text">
-                        <b><%= listing.title %></b>
-                        <br>&#8377; <%= listing.price.toLocaleString("en-IN") %> /night <br>
-                        <b>Number of Nights:</b> <%= listing.nights %> <br>
-                        <b>Total Cost:</b> &#8377; <%= (listing.price * listing.nights).toLocaleString("en-IN") %> <br>
-                        <b class="tax-info">Total Cost with GST:</b>
-                        <span class="tax-info">&#8377; <%= ((listing.price * listing.nights) * 1.18).toLocaleString("en-IN") %></span>
-                    </p>
+
+        <div class="col">
+
+            <a 
+                href="/listings/<%= listing._id %>" 
+                class="listing-link"
+            >
+
+                <div class="card listing-card">
+
+                    <img 
+                        src="<%= listing.image.url %>"
+                        class="card-img-top listing-image"
+                        alt="listing_image"
+                    >
+
+                    <div class="card-img-overlay"></div>
+
+                    <div 
+                        class="card-body"
+                        data-price="<%= listing.price %>"
+                        data-nights="<%= listing.nights %>"
+                    >
+
+                        <p class="card-text">
+
+                            <b>
+                                <%= listing.title %>
+                            </b>
+
+                            <br>
+
+                            &#8377;
+                            <%= listing.price.toLocaleString("en-IN") %>
+                            /night
+
+                            <br>
+
+                            <b>Number of Nights:</b>
+                            <%= listing.nights %>
+
+                            <br>
+
+                            <b>Total Cost:</b>
+                            &#8377;
+                            <%= (listing.price * listing.nights).toLocaleString("en-IN") %>
+
+                            <br>
+
+                            <b class="tax-info">
+                                Total Cost with GST:
+                            </b>
+
+                            <span class="tax-info">
+                                &#8377;
+                                <%= ((listing.price * listing.nights) * 1.18).toLocaleString("en-IN") %>
+                            </span>
+
+                        </p>
+
+                    </div>
+
                 </div>
-            </div>
-        </a>
+
+            </a>
+
+        </div>
+
     <% } %>
+
 </div>
+
+
+<!-- =========================
+     Tax Toggle JavaScript
+     ========================= -->
 
 <script>
-    const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+
+    const taxSwitch = document.getElementById(
+        "flexSwitchCheckDefault"
+    );
+
 
     const updateTaxInfoDisplay = () => {
+
         const cardBodies = document.querySelectorAll(".card-body");
 
+
         cardBodies.forEach(cardBody => {
-            const price = parseFloat(cardBody.dataset.price);
-            const nights = parseInt(cardBody.dataset.nights);
 
-            const totalWithGST = (price * nights * 1.18).toLocaleString("en-IN");
+            const price = parseFloat(
+                cardBody.dataset.price
+            );
 
-            const taxInfoElements = cardBody.querySelectorAll(".tax-info");
+            const nights = parseInt(
+                cardBody.dataset.nights
+            );
+
+
+            const totalWithGST =
+                (price * nights * 1.18)
+                .toLocaleString("en-IN");
+
+
+            const taxInfoElements =
+                cardBody.querySelectorAll(".tax-info");
+
 
             if (taxSwitch.checked) {
+
                 if (taxInfoElements.length === 2) {
-                    taxInfoElements[1].innerHTML = `&#8377; ${totalWithGST}`;
+
+                    taxInfoElements[1].innerHTML =
+                        `&#8377; ${totalWithGST}`;
+
                 }
-                taxInfoElements.forEach(el => el.style.display = "inline");
+
+                taxInfoElements.forEach(el => {
+                    el.style.display = "inline";
+                });
+
             } else {
-                taxInfoElements.forEach(el => el.style.display = "none");
+
+                taxInfoElements.forEach(el => {
+                    el.style.display = "none";
+                });
+
             }
+
         });
+
     };
 
-    // Run on page load
-    window.onload = updateTaxInfoDisplay;
+
+    // Run when page loads
+
+    window.addEventListener(
+        "load",
+        updateTaxInfoDisplay
+    );
+
 
     // Toggle change
-    taxSwitch?.addEventListener("change", () => {
-        updateTaxInfoDisplay();
-    });
+
+    taxSwitch?.addEventListener(
+        "change",
+        updateTaxInfoDisplay
+    );
+
 </script>

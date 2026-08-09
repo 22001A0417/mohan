@@ -1,18 +1,28 @@
+/* =========================
+   General
+   ========================= */
+
 body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     font-optical-sizing: auto;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
     flex: 1;
 }
 
-/* navbar */
+
+/* =========================
+   Navbar
+   ========================= */
+
 .navbar {
-    height: 5rem;
+    min-height: 5rem;
+    height: auto;
     background-color: white;
 }
 
@@ -25,35 +35,39 @@ body {
     color: #222222 !important;
 }
 
-/* Footer */
+
+/* =========================
+   Footer
+   ========================= */
+
 footer {
-    background-color: #343a40; 
-    color: #ffffff; 
-    border-top: 1px solid #444; 
-    padding: 1rem 0; 
+    background-color: #343a40;
+    color: #ffffff;
+    border-top: 1px solid #444;
+    padding: 1rem 0;
 }
 
 .f-info-links a {
     text-decoration: none;
-    color: #ffc107; 
+    color: #ffc107;
     transition: color 0.3s ease;
 }
 
 .f-info-links a:hover {
     text-decoration: underline;
-    color: #fe424d; 
+    color: #fe424d;
 }
 
 .f-info-socials i {
     font-size: 1.5rem;
     margin-right: 1rem;
-    color: #ffffff; 
+    color: #ffffff;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .f-info-socials i:hover {
-    transform: scale(1.2); 
-    color: #007bff; 
+    transform: scale(1.2);
+    color: #007bff;
 }
 
 .f-info-brand {
@@ -66,56 +80,67 @@ footer {
 .f-info {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     padding: 1rem;
 }
 
-/* Footer Social Media Links in Vertical Layout */
+
+/* Footer Social Media Links */
+
 .f-info-socials {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     margin-bottom: 1rem;
 }
 
 .f-info-socials a {
     text-decoration: none;
-    color: white; 
-    font-size: 1rem; 
-    margin: 0.5rem 0; 
-    display: flex; 
-    align-items: center; 
+    color: white;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
-    width: 100%; 
+    width: 100%;
     transition: color 0.3s ease;
 }
 
 .f-info-socials a:hover {
-    color: #007bff; 
+    color: #007bff;
 }
 
 .f-info-socials i {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .f-info-socials i:hover {
-    transform: scale(1.2); 
-    color: #007bff; 
+    transform: scale(1.2);
+    color: #007bff;
 }
 
-/* cards */
+
+/* =========================
+   Listing Cards
+   ========================= */
+
 .listing-card {
     border: none !important;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
-    object-fit: cover !important
+    object-fit: cover !important;
+}
+
+.listing-image {
+    height: 20rem;
 }
 
 .card-body {
@@ -128,9 +153,15 @@ footer {
 
 .listing-link {
     text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
-/* card effect */
+
+/* =========================
+   Card Hover Effect
+   ========================= */
+
 .card-img-overlay {
     opacity: 0;
 }
@@ -140,25 +171,86 @@ footer {
     background-color: white;
 }
 
-/* new page */
+
+/* =========================
+   New Page
+   ========================= */
+
 .add-btn {
     background-color: #fe424d !important;
     border: none !important;
 }
 
-/* edit page */
+
+/* =========================
+   Edit Page
+   ========================= */
+
 .edit-btn {
     background-color: #fe424d !important;
     border: none !important;
 }
 
-/* show page */
+.original-listing-image {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+}
+
+
+/* =========================
+   Show Page
+   ========================= */
+
 .show-img {
     height: 30vh;
 }
 
+/* Show page buttons */
+
 .btns {
     display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btns .edit-btn {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.btns form {
+    margin: 0;
+}
+
+.btns form button {
+    margin: 0;
+}
+
+
+/* Mobile */
+
+@media (max-width: 576px) {
+
+    .btns {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .btns .edit-btn,
+    .btns form,
+    .btns form button {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
 }
 
 .show-card {
@@ -166,25 +258,359 @@ footer {
     padding-right: 0;
 }
 
-/* map */
-#map { 
+
+/* =========================
+   Map
+   ========================= */
+
+#map {
     height: 400px;
-    width: 80vh;
+    width: 100%;
+    max-width: 100%;
 }
 
-/* Icons default color and size */
+
+/* =========================
+   Filters
+   ========================= */
+
 .filter i {
-    color: black; 
-    font-size: 1.5rem; 
-    transition: color 0.3s ease; 
+    color: black;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
-  
+
 .filter:hover i {
-    color: #fe424d; 
+    color: #fe424d;
 }
-  
+
 .filter p {
-    color: black; 
-    margin-top: 0.5rem; 
+    color: black;
+    margin-top: 0.5rem;
     font-weight: 500;
-} 
+}
+
+
+/* =========================
+   Tablet
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        min-height: 5rem;
+        height: auto;
+    }
+
+    .listing-image {
+        height: 18rem;
+    }
+
+    .tax-toggle {
+        margin-top: 1rem;
+    }
+
+    .original-listing-image {
+        max-width: 100%;
+        height: 280px;
+    }
+
+    #map {
+        height: 350px;
+    }
+
+}
+
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 576px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+
+    /* Navbar */
+
+    .navbar {
+        min-height: auto;
+        padding: 0.75rem 1rem;
+    }
+
+
+    /* Listing cards */
+
+    .listing-image {
+        height: 16rem;
+    }
+
+    .listing-card {
+        margin-bottom: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
+
+    /* Tax toggle */
+
+    .tax-toggle {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+
+    /* Filters */
+
+    #filters {
+        padding: 0.75rem 0;
+        justify-content: flex-start;
+    }
+
+    .filter {
+        min-width: 5.5rem;
+        margin: 0 0.3rem;
+    }
+
+    .filter i {
+        font-size: 1.5rem;
+    }
+
+    .filter p {
+        font-size: 0.75rem;
+    }
+
+
+    /* Edit page */
+
+    .original-listing-image {
+        width: 100%;
+        max-width: 100%;
+        height: 220px;
+    }
+
+    .edit-btn {
+        width: 100%;
+    }
+
+
+    /* Show page buttons */
+
+    .btns {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btns .edit-btn,
+    .btns form,
+    .btns form button {
+        width: 100%;
+    }
+
+
+    /* Map */
+
+    #map {
+        height: 300px;
+        width: 100%;
+    }
+
+
+    /* Footer */
+
+    .f-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .f-info-socials {
+        width: 100%;
+    }
+}
+
+/* Remove extra side space on tablet and mobile */
+@media (max-width: 768px) {
+
+    .col-8.offset-3 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .col-6.offset-3 {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .row {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Listing image */
+    .listing-image {
+        width: 100% !important;
+        height: 16rem;
+        object-fit: cover;
+    }
+
+    /* Listing card */
+    .listing-card {
+        width: 100% !important;
+    }
+
+    /* Show page */
+    .col-8.offset-3,
+    .col-6.offset-3 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    /* Map */
+    #map {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 300px;
+    }
+
+    /* Edit page image */
+    .original-listing-image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 220px;
+    }
+
+    /* Edit/Delete buttons */
+    .btns {
+        width: 100%;
+    }
+
+    .btns .edit-btn,
+    .btns form,
+    .btns form button {
+        width: 100% !important;
+    }
+
+    /* Footer */
+    .f-info {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* =========================
+   Reviews
+   ========================= */
+
+.review-card {
+    overflow: hidden;
+}
+
+.review-rating {
+    max-width: 100%;
+}
+
+.review-comment {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+
+/* =========================
+   Mobile Reviews
+   ========================= */
+
+@media (max-width: 576px) {
+
+    .reviews-container {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .review-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .review-rating {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .review-comment {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .review-delete-form {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+}
+
+/* =========================
+   Edit / Delete buttons
+   Desktop layout
+   ========================= */
+
+@media (min-width: 769px) {
+
+    .btns {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .btns .edit-btn {
+        width: 8.333333% !important;
+        margin-left: 25% !important;
+    }
+
+    .btns form {
+        margin-left: 41.666667% !important;
+    }
+
+    .btns form button {
+        margin: 0 !important;
+    }
+}

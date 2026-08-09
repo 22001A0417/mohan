@@ -16,7 +16,7 @@
             alt="listing_image"
         >
         <div class="card-body">
-            <p class="card-text">Owned by <i><%= listing.owner.username %></i></p>
+            <p class="card-text">Owned by <i><%= listing.owner ? listing.owner.username : "Unknown user" %></i></p>
             <p class="card-text"><%= listing.description %></p>    
             <p class="card-text"><b>Price:</b> &#8377; <%= listing.price.toLocaleString("en-IN") %></p>    
             <p class="card-text"><b>Location:</b>&nbsp;<%= listing.location %></p>    
@@ -25,16 +25,17 @@
     </div> 
 
     <br>
-    <% if(currUser && listing.owner._id.equals(currUser._id)) { %>
+    
         <div class="btns">
-            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
-        
-            <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE" >
-                <button class="btn btn-dark offset-5">Delete</button>
+            <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark edit-btn"> Edit </a>
+
+            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                <button class="btn btn-dark"> Delete </button>
             </form>
         </div>
-    <% } %>
-
+    
+    <br>
+    
     <div class="col-8 offset-3">
         <% if(currUser) { %>
             <hr>
@@ -99,18 +100,25 @@
         <% } %>
         
         <% if(listing.reviews.length > 0) { %>
-            <div class="row">
+            <div class="row reviews-container">
                 <p><b>All Reviews</b></p>
+
                 <% for(review of listing.reviews) { %>
-                    <div class="card col-5 ms-3 mb-3">
+
+                    <div class="card col-5 ms-3 mb-3 review-card">
                         <div class="card-body">
-                            <h3 class="card-title">@<%= review.author.username %></h3>
-                            <p class="card-text starability-result" data-rating="<%= review.rating %>"></p>
-                            <p class="card-text"><%= review.comment %></p>
+                            <h3 class="card-title"> @<%= review.author.username %> </h3>
+                            <p class="card-text starability-result review-rating" data-rating="<%= review.rating %>"></p>
+                            <p class="card-text review-comment"> <%= review.comment %></p>
                         </div>
+
                         <% if (currUser && review.author._id.toString() === currUser._id.toString()) { %>
-                            <form action="/listings/<%= listing._id %>/reviews/<%=review._id %>?_method=DELETE" class="mb-3" method="POST">
-                                <button class="btn btn-sm btn-dark">Delete</button>
+                            <form 
+                                action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" 
+                                class="mb-3 review-delete-form" 
+                                method="POST"
+                            >
+                                <button class="btn btn-sm btn-dark"> Delete </button>
                             </form>
                         <% } %>
                     </div>
