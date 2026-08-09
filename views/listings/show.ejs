@@ -18,7 +18,8 @@
         <div class="card-body">
             <p class="card-text">Owned by <i><%= listing.owner ? listing.owner.username : "Unknown user" %></i></p>
             <p class="card-text"><%= listing.description %></p>    
-            <p class="card-text"><b>Price:</b> &#8377; <%= listing.price.toLocaleString("en-IN") %></p>    
+            <p class="card-text"><b>Price:</b> &#8377; <%= listing.price.toLocaleString("en-IN") %></p> 
+            <p class="card-text"><b>No of Nights:</b>&nbsp;<%= listing.nights %></p>   
             <p class="card-text"><b>Location:</b>&nbsp;<%= listing.location %></p>    
             <p class="card-text"><b>Country:</b>&nbsp;<%= listing.country %></p>    
         </div>
